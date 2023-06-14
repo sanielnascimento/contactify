@@ -1,6 +1,10 @@
+import RoutesMain from "./routes";
+import GlobalStyle from "./styles/global";
+
 const App = () => (
   <>
-    <h1>Ok</h1>
+    <GlobalStyle />
+    <RoutesMain />
   </>
 );
 
