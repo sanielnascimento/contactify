@@ -1,21 +1,29 @@
-import React from "react";
-import { StyledLogin } from "./styles";
-import { Footer } from "../../components/Footer";
-import { Input } from "../../components/Input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { StyledText } from "../../styles/typography";
 
+import { Footer } from "../../components/Footer";
+import { Input } from "../../components/Input";
+
+import { useForm } from "react-hook-form";
+import { LoginSchema } from "./validator";
+
+import { StyledLogin } from "./styles";
+import { useAuth } from "../../hooks";
+
+import { tLogin } from "./types";
+import React from "react";
+
 const Login = () => {
-  const images = [
-    "/img/pic-1.jpg",
-    "/img/pic-2.jpg",
-    "/img/pic-3.jpg",
-    "/img/pic-4.jpg",
-    "/img/pic-5.jpg",
-    "/img/pic-6.jpg",
-    "/img/pic-7.png",
-    "/img/pic-8.jpg",
-  ];
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
+  const { signIn, images } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<tLogin>({
+    resolver: zodResolver(LoginSchema),
+  });
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -40,9 +48,26 @@ const Login = () => {
               >
                 Login
               </StyledText>
-              <form className="login-form" action="">
-                <Input id="email" type="email" placeholder="E-mail" />
-                <Input id="password" type="password" placeholder="Senha" />
+              <form
+                noValidate
+                className="login-form"
+                onSubmit={handleSubmit(signIn)}
+              >
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="E-mail"
+                  {...register("email")}
+                />
+                {errors.email && <span>{errors.email.message}</span>}
+
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Senha"
+                  {...register("password")}
+                />
+                {errors.password && <span>{errors.password.message}</span>}
                 <button type="submit">Entrar</button>
               </form>
             </div>
@@ -56,7 +81,6 @@ const Login = () => {
               >
                 Ainda não possui uma conta?
               </StyledText>
-
               <a href="">
                 <StyledText
                   tag="p"
