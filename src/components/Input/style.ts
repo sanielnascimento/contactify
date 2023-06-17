@@ -23,7 +23,7 @@ export const StyledFieldset = styled.fieldset`
     border: 1px solid var(--color-red-400);
     outline: none;
 
-    transition: 0.3s ease;
+    transition: border 0.3s ease;
 
     &::placeholder {
       font-weight: var(--font-weight-regular);
@@ -31,11 +31,16 @@ export const StyledFieldset = styled.fieldset`
       line-height: 19px;
 
       color: var(--color-red-300);
+      transition: color 0.3s ease;
     }
 
     &:focus-within, &:hover {
-      border: 1px solid var(--color-brand-o);
+      border: 1.5px solid var(--color-brand-o);
       outline: var(--color-brand-o);
+      &::placeholder {
+      color: var(--color-brand-o);
+    }
+
     }
   }
 `;

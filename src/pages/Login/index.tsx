@@ -85,7 +85,7 @@ const Login = () => {
                 <StyledText
                   tag="p"
                   className=""
-                  color="--color-brand"
+                  color="--color-red-200"
                   text="nine"
                   lineHeight="2"
                 >
@@ -109,7 +109,7 @@ const Login = () => {
               text="seven-m"
               lineHeight=""
             >
-              Mantenha sempre ao seu alcance as pessoas e intituições que são
+              Mantenha sempre ao seu alcance as pessoas que são
               importantes para você.
             </StyledText>
             <figure className="illustration-box">
