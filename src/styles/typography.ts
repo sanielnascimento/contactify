@@ -4,6 +4,7 @@ import { TextBase } from './TextBase'
 export const StyledText = styled(TextBase)`
   line-height: ${({ lineHeight }) => lineHeight};
   color: var(${({ color }) => (color ? color : '--color-gray-600')});
+  transition: 0.5s ease;
   ${({ text }) => {
     switch (text) {
       case 'one':

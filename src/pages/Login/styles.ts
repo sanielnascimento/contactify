@@ -59,6 +59,11 @@ export const StyledLogin = styled.main`
             color: var(--color-red-600);
             background-color: var(--color-brand);
             border-radius: var(--radius-2);
+            transition: 0.3s ease;
+            &:hover{
+              color: var(--color-red-600);
+              background-color: var(--color-primary);
+            }
           }
         }
       }
@@ -74,6 +79,13 @@ export const StyledLogin = styled.main`
 
         background-color: transparent;
         border: 1px solid var(--color-red-400);
+
+        > a > p {
+          &:hover{
+            color: var(--color-brand);
+            text-decoration: underline;          
+          }        
+        }
       }
     }
 
@@ -106,6 +118,7 @@ export const StyledLogin = styled.main`
 
       .illustration-box {
         width: 70%;
+        transition: 0.5s ease-in-out;
       }
 
       .clients-illustration {

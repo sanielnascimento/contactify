@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
   React.useEffect(() => {
     const token = localStorage.getItem("Contactify:token");
 
-    if (!token) return;
+    if (!token) navigate("/login");
 
     api.defaults.headers.common.authorization = `Bearer ${token}`;
 
@@ -42,6 +42,7 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     })();
 
     setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const signIn = async (body: tLogin): Promise<void> => {
