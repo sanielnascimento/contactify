@@ -5,8 +5,7 @@ export const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 1rem;
-  height: 100px;
+  height: 13.4vh;
   width: 100vw;
   background: linear-gradient(
     180deg,

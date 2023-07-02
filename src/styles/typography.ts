@@ -37,6 +37,16 @@ export const StyledText = styled(TextBase)`
           font-size: var(--font-size-5);
           font-weight: var(--font-weight-regular);
         `
+      case 'six-m':
+        return css`
+          font-size: var(--font-size-6);
+          font-weight: var(--font-weight-semibold);
+        `
+      case 'six-r':
+        return css`
+          font-size: var(--font-size-6);
+          font-weight: var(--font-weight-regular);
+        `
       case 'seven':
         return css`
           font-size: var(--font-size-7);

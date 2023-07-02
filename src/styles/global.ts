@@ -8,9 +8,9 @@ export default createGlobalStyle`
 --color-red-008: rgba(20, 1, 1, 0.8);
 --color-red-000: rgb(20, 1, 1);
 --color-red-100: #963131;
---color-red-300: #CD7676;
 --color-red-200: #F4796B;
---color-red-300: #F4998D;
+--color-red-300: #CD7676;
+--color-red-350: #F4998D;
 --color-red-400: #F9BABA;
 --color-red-500: #FFD7D7;
 --color-red-600: #FFE9E9;
@@ -21,6 +21,8 @@ export default createGlobalStyle`
 --color-gray-300: #828282;
 --color-gray-400: #e0e0e0;
 --color-gray-500: #f2f2f2;
+
+--color-white-fixed: #ffffff;
 
 --color-error: #e60000;
 --color-sucess: #168821;
@@ -48,9 +50,12 @@ font-size: 60%;
 
 @media (min-width: 700px) {
     :root{
-        font-size: 62.5%;    
+        font-size: 62.5%;
+        position: relative;
     }
 }
+
+
 
 * {
     margin: 0;
@@ -61,16 +66,22 @@ font-size: 60%;
 }
 
 body, html {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 body {
     background-color: var(--color-red-600);
     color: var(--color-primary);
     font-family: "Inter", sans-serif;
+}
 
-    overflow-x: hidden;
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
 }
 
 
