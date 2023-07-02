@@ -7,7 +7,7 @@ export const Footer = () => {
       <StyledText
         tag="p"
         className=""
-        color="--color-primary"
+        color="--color-white-fixed"
         text="height"
         lineHeight="2"
       >

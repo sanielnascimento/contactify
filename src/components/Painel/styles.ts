@@ -118,7 +118,7 @@ export const StyledPainel = styled.aside`
       }
     }
   }
-  @media (max-width: 760px) {
+  @media (max-width: 759px) {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -128,7 +128,7 @@ export const StyledPainel = styled.aside`
     min-height: 4.5rem;
     max-width: 100%;
     flex-direction: row;
-    background-color: var(--color-red-300);
+    background-color: var(--color-brand-o);
     z-index: 99;
 
     .interactive {
@@ -139,6 +139,11 @@ export const StyledPainel = styled.aside`
         outline: none;
         border: none;
         width: 6rem;
+        color: var(--color-red-600);
+        &:hover {
+          background-color: var(--color-primary);
+          border: 0.1rem solid var(--color-primary);
+        }
         > span {
           display: none;
         }
