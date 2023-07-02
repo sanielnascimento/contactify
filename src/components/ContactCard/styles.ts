@@ -5,12 +5,18 @@ export const SContactCard = styled.li`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-width: 32rem;
   max-width: 100%;
   height: 22rem;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: var(--color-red-500);
   border-radius: var(--radius-2);
+  @media (min-width: 761px) {
+    width: 48%;
+  }
+
+  @media (min-width: 1240px) {
+    width: 32%;
+  }
   
   > div{
     display: flex;

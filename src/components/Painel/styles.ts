@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const StyledPainel = styled.aside`
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 250px;
   max-width: 30%;
-  min-height: 77vh;
+  min-height: 72vh;
   gap: 2rem;
   padding: 1.5%;
   border-left: 0.1rem solid var(--color-brand-o);
+  @media (min-width: 761px) {
+    top: 6rem;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 2%;
+  }
 
   .user-infos {
     display: flex;
@@ -71,7 +78,7 @@ export const StyledPainel = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
 
     > button {
@@ -118,7 +125,7 @@ export const StyledPainel = styled.aside`
       }
     }
   }
-  @media (max-width: 759px) {
+  @media (max-width: 760px) {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -129,6 +136,7 @@ export const StyledPainel = styled.aside`
     max-width: 100%;
     flex-direction: row;
     background-color: var(--color-brand-o);
+    transition: position 0.3s ease-in-out;
     z-index: 99;
 
     .interactive {

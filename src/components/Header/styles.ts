@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (min-width: 760px) {
+  @media (min-width: 761px) {
     max-width: 96%;
   }
 `;
@@ -25,7 +25,7 @@ export const StyledHeader = styled.header`
   background-color: var(--color-brand-o);
   z-index: 10;
   transition: height 0.4s ease;
-  @media (min-width: 760px) {
+  @media (min-width: 761px) {
     height: 8.4vh;
   }
   
@@ -45,7 +45,7 @@ export const StyledHeader = styled.header`
       transition: height 0.4s ease;
     }
     
-    @media (min-width: 760px) {
+    @media (min-width: 761px) {
       .brand-balloon{
         height: 3.5rem;
       }
@@ -72,7 +72,7 @@ export const StyledHeader = styled.header`
     margin-top: 0.3rem;
   }
 
-  @media (min-width: 760px) {
+  @media (min-width: 761px) {
     .header-figure {
       width: 4.5rem;
     }

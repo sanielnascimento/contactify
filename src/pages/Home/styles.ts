@@ -9,5 +9,7 @@ export const StyledHome = styled.main`
   margin: 6rem auto;
   padding-top: 1rem;
   max-width: 96%;
-  /* min-height: 77.2vh; */
+  @media (min-width: 901px) {
+    margin: 6rem auto 4rem auto ;
+  }
 `;
