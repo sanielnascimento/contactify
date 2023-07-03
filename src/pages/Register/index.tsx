@@ -16,7 +16,9 @@ import React from "react";
 
 const Register = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
+  const [fadeIn, setFadeIn] = React.useState(false);
   const { signUp, images } = useAuth();
+
 
   const {
     register,
@@ -27,12 +29,19 @@ const Register = () => {
   });
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    const timer = setTimeout(() => {
+      setFadeIn(false);
+
+      setTimeout(() => {
+        const nextImageIndex = (currentImageIndex + 1) % images.length;
+        setCurrentImageIndex(nextImageIndex);
+        setFadeIn(true);
+      }, 500);
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentImageIndex]);
 
   return (
     <>
@@ -147,7 +156,7 @@ const Register = () => {
             </StyledText>
             <figure className="illustration-box">
               <img
-                className="clients-illustration"
+                className={fadeIn ? "fade-in" : "fade-out"}
                 src={images[currentImageIndex]}
                 alt={`image ${images[currentImageIndex]}`}
               />
