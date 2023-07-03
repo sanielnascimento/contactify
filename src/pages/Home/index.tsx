@@ -1,7 +1,16 @@
-import React from "react";
-import { api } from "../../services";
+import { ContactBox } from "../../components/ContactBox";
+
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { Painel } from "../../components/Painel";
+
 import { useAuth } from "../../hooks";
-import { iContact } from "./styles";
+import { StyledHome } from "./styles";
+
+import { api } from "../../services";
+import { iContact } from "./types";
+
+import React from "react";
 
 const Home = () => {
   const [contacts, setContacts] = React.useState<Array<iContact>>([]);
@@ -16,13 +25,12 @@ const Home = () => {
 
   return (
     <>
-      {owner && (
-        <div>
-          <h1>{owner.name}</h1>
-          <img src={owner.imgUrl} alt={owner.name} />
-        </div>
-      )}
-      <ul>{contacts && contacts.map((x) => <li key={x.id}>{x.name}</li>)}</ul>
+      <Header user={owner} />
+      <StyledHome>
+        <ContactBox contacts={contacts} />
+        <Painel user={owner} />
+      </StyledHome>
+      <Footer />
     </>
   );
 };

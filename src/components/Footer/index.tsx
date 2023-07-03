@@ -7,9 +7,9 @@ export const Footer = () => {
       <StyledText
         tag="p"
         className=""
-        color="--color-primary"
+        color="--color-white-fixed"
         text="height"
-        lineHeight="19px"
+        lineHeight="2"
       >
         © 2023 Contactify - Todos os direitos reservados
       </StyledText>

@@ -10,6 +10,7 @@ export interface iTextBaseProps {
   | "--color-red-000"
   | "--color-red-100"
   | "--color-red-300"
+  | "--color-red-350"
   | "--color-red-200"
   | "--color-red-300"
   | "--color-red-400"
@@ -23,7 +24,8 @@ export interface iTextBaseProps {
   | "--color-gray-500"
   | "--color-error"
   | "--color-sucess"
-  | "--color-warning";
-  text: "one" | "two" | "three" | "four" | "five" | "six" | "seven" | "seven-m" | "height" | "nine";
+  | "--color-warning"
+  | "--color-white-fixed";
+  text: "one" | "two" | "three" | "four" | "five" | "six" | "six-m" | "six-r" | "seven" | "seven-m" | "height" | "nine";
   lineHeight: string;
 }

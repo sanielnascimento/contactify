@@ -12,6 +12,7 @@ import { useAuth } from "../../hooks";
 
 import { tLogin } from "./types";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
@@ -81,7 +82,7 @@ const Login = () => {
               >
                 Ainda não possui uma conta?
               </StyledText>
-              <a href="">
+              <Link to="/register">
                 <StyledText
                   tag="p"
                   className=""
@@ -91,7 +92,7 @@ const Login = () => {
                 >
                   Clique aqui!
                 </StyledText>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="brand-area">
@@ -109,8 +110,8 @@ const Login = () => {
               text="seven-m"
               lineHeight=""
             >
-              Mantenha sempre ao seu alcance as pessoas que são
-              importantes para você.
+              Mantenha sempre ao seu alcance as pessoas que são importantes para
+              você.
             </StyledText>
             <figure className="illustration-box">
               <img
