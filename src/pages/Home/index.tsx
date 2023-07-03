@@ -12,6 +12,7 @@ import { iContact } from "./types";
 
 import React from "react";
 
+
 const Home = () => {
   const [contacts, setContacts] = React.useState<Array<iContact>>([]);
   const { owner } = useAuth();

@@ -1,16 +1,21 @@
 import { StyledText } from "../../styles/typography";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
+import { iContactCardProps } from "./types";
+import { BiHeart } from "react-icons/bi";
+
 import { StyledButton } from "../Button";
 import { SContactCard } from "./styles";
-import { iContactCardProps } from "./types";
+
 import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { BiHeart } from "react-icons/bi";
 
 export const ContactCard = ({ contact }: iContactCardProps) => {
   const splitName: string[] = contact.name.split(" ");
+
   const initials: string =
     splitName[0][0].toUpperCase() +
     splitName[splitName.length - 1][0].toUpperCase();
+    
 
   return (
     <SContactCard>

@@ -11,7 +11,10 @@ import { useAuth } from "../../hooks";
 
 export const Painel = ({ user }: iPainelProps) => {
   const { logOut } = useAuth();
+
   if (!user) return;
+  
+  
   return (
     <StyledPainel>
       <div className="user-infos">

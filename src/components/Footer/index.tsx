@@ -1,9 +1,27 @@
 import { StyledText } from "../../styles/typography";
 import { StyledFooter } from "./styles";
+import React from "react";
 
 export const Footer = () => {
+  const [footerBottom, setFooterBottm] = React.useState<string>("0");
+
+  const calculateFooterBottm = (pathname: string) => {
+    if (pathname === "/login" || pathname === "/register") {
+      return "0";
+    } else {
+      return "42px";
+    }
+  };
+
+  React.useEffect(() => {
+    const { pathname } = window.location;
+    const height = calculateFooterBottm(pathname);
+    
+    setFooterBottm(height);
+  }, []);
+
   return (
-    <StyledFooter>
+    <StyledFooter footerBottom={footerBottom}>
       <StyledText
         tag="p"
         className=""

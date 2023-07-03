@@ -4,25 +4,29 @@ export const StyledLogin = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  
   width: 100%;
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
 
   section {
     display: flex;
     justify-content: center;
     align-items: center;
+  
     width: 900px;
     max-width: 97%;
     height: 500px;
 
     .login-box {
       display: flex;
-      width: 50%;
-      max-width: 50%;
-      height: 500px;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+  
+      width: 50%;
+      max-width: 50%;
+      height: 500px;
+  
       gap: 1.6rem;
 
       .login-area {
@@ -30,6 +34,7 @@ export const StyledLogin = styled.main`
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+  
         width: 350px;
         max-width: 95%;
         height: 300px;
@@ -40,26 +45,33 @@ export const StyledLogin = styled.main`
           display: flex;
           flex-direction: column;
           justify-content: center;
+  
           gap: 1rem;
+  
           width: 80%;
 
           button {
             display: flex;
             justify-content: center;
             align-items: center;
+  
             width: 100%;
             height: 3.8rem;
-            padding: 0 1rem;
-            border: none;
-
+           
             font-weight: 600;
             font-size: 1.6rem;
+            
+            padding: 0 1rem;
+            
+            border: none;
             margin-top: 1rem;
 
             color: var(--color-red-600);
             background-color: var(--color-brand);
             border-radius: var(--radius-2);
+
             transition: 0.3s ease;
+
             &:hover {
               color: var(--color-red-600);
               background-color: var(--color-primary);
@@ -73,6 +85,7 @@ export const StyledLogin = styled.main`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         width: 350px;
         max-width: 95%;
         height: 80px;
@@ -95,6 +108,7 @@ export const StyledLogin = styled.main`
       align-items: center;
       text-align: center;
       justify-content: space-evenly;
+
       width: 50%;
       max-width: 50%;
       height: 500px;
@@ -104,6 +118,7 @@ export const StyledLogin = styled.main`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
         width: 170px;
 
         .logo {
@@ -128,6 +143,7 @@ export const StyledLogin = styled.main`
 
     @media (max-width: 600px) {
       flex-direction: column-reverse;
+      margin: 5rem 0 7rem 0;
       gap: 2rem;
 
       .illustration-box {
