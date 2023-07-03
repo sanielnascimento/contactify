@@ -34,7 +34,7 @@ export const StyledLogin = styled.main`
         max-width: 95%;
         height: 300px;
 
-        border: 1px solid var(--color-red-400);
+        border: 1px solid var(--color-red-200);
 
         .login-form {
           display: flex;
@@ -60,7 +60,7 @@ export const StyledLogin = styled.main`
             background-color: var(--color-brand);
             border-radius: var(--radius-2);
             transition: 0.3s ease;
-            &:hover{
+            &:hover {
               color: var(--color-red-600);
               background-color: var(--color-primary);
             }
@@ -78,13 +78,13 @@ export const StyledLogin = styled.main`
         height: 80px;
 
         background-color: transparent;
-        border: 1px solid var(--color-red-400);
+        border: 1px solid var(--color-red-200);
 
         > a > p {
-          &:hover{
+          &:hover {
             color: var(--color-brand);
-            text-decoration: underline;          
-          }        
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -118,13 +118,11 @@ export const StyledLogin = styled.main`
 
       .illustration-box {
         width: 70%;
-        transition: 0.5s ease-in-out;
-      }
-
-      .clients-illustration {
-        max-width: 100%;
-        max-height: 100%;
-        aspect-ratio: 3/2;
+        > img {
+          max-width: 100%;
+          max-height: 100%;
+          aspect-ratio: 3/2;
+        }
       }
     }
 
@@ -132,10 +130,11 @@ export const StyledLogin = styled.main`
       flex-direction: column-reverse;
       gap: 2rem;
 
-      .clients-illustration {
-        display: none;
+      .illustration-box {
+        > img {
+          display: none;
+        }
       }
-
       .brand-area > p {
         display: none;
       }
@@ -156,5 +155,15 @@ export const StyledLogin = styled.main`
         }
       }
     }
+  }
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.25s ease-in;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
   }
 `;

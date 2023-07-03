@@ -132,13 +132,11 @@ export const StyledRegister = styled.main`
 
       .illustration-box {
         width: 70%;
-        transition: 0.5s ease-in-out;
-      }
-
-      .clients-illustration {
-        max-width: 100%;
-        max-height: 100%;
-        aspect-ratio: 3/2;
+        > img {
+          max-width: 100%;
+          max-height: 100%;
+          aspect-ratio: 3/2;
+        }
       }
     }
 
@@ -146,8 +144,10 @@ export const StyledRegister = styled.main`
       flex-direction: column-reverse;
       gap: 1rem;
 
-      .clients-illustration {
-        display: none;
+      .illustration-box {
+        > img {
+          display: none;
+        }
       }
 
       .brand-area {
@@ -177,4 +177,15 @@ export const StyledRegister = styled.main`
       }
     }
   }
+  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.25s ease-in;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+  }
+
 `;
