@@ -1,6 +1,7 @@
-import { forwardRef } from 'react'
 import { StyledFieldset } from './style'
 import { iInputProps } from './types';
+import { forwardRef } from 'react'
+
 
 export const Input = forwardRef<HTMLInputElement, iInputProps>(
   ({ type, placeholder, id, ...rest }, ref) => (

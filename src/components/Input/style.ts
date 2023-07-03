@@ -1,19 +1,25 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledFieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   width: 100%;
+
+  gap: 10px;
+
   border: none;
 
   input {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     padding: 0 1rem;
+
     width: 100%;
     height: 3.8rem;
+
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-7);
     line-height: 19px;
@@ -34,13 +40,13 @@ export const StyledFieldset = styled.fieldset`
       transition: color 0.3s ease;
     }
 
-    &:focus-within, &:hover {
+    &:focus-within,
+    &:hover {
       border: 1.5px solid var(--color-brand-o);
       outline: var(--color-brand-o);
       &::placeholder {
-      color: var(--color-brand-o);
-    }
-
+        color: var(--color-brand-o);
+      }
     }
   }
 `;

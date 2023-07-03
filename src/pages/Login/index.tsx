@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-  const [fadeIn, setFadeIn] = React.useState(false);
+  const [fadeIn, setFadeIn] = React.useState(true);
   const { signIn, images } = useAuth();
 
   const {

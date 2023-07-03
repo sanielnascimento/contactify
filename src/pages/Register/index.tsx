@@ -16,9 +16,8 @@ import React from "react";
 
 const Register = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-  const [fadeIn, setFadeIn] = React.useState(false);
+  const [fadeIn, setFadeIn] = React.useState(true);
   const { signUp, images } = useAuth();
-
 
   const {
     register,

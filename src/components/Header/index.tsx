@@ -1,9 +1,12 @@
 import { StyledText } from "../../styles/typography";
 import { Container, StyledHeader } from "./styles";
+
 import { iHeaderProps } from "./types";
+
 
 export const Header = ({ user }: iHeaderProps) => {
   if (!user) return;
+  
   return (
     <StyledHeader>
       <Container>

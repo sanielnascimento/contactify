@@ -23,9 +23,14 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     "/img/pic-3.jpg",
     "/img/pic-4.jpg",
     "/img/pic-5.jpg",
-    "/img/pic-6.jpg",
-    "/img/pic-7.png",
+    "/img/pic-6.png",
+    "/img/pic-7.jpg",
     "/img/pic-8.jpg",
+    "/img/pic-9.jpg",
+    "/img/pic-10.jpg",
+    "/img/pic-11.jpg",
+    "/img/pic-12.jpg",
+    "/img/pic-13.jpg",
   ];
 
 

@@ -1,6 +1,7 @@
-import { iContactsBoxProps } from "./types"
-import { SContactBox } from "./styles"
 import { ContactCard } from "../ContactCard"
+import { iContactsBoxProps } from "./types"
+
+import { SContactBox } from "./styles"
 
 export const ContactBox = ({contacts}: iContactsBoxProps) => {
   return (

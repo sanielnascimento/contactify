@@ -1,6 +1,8 @@
 import { StyledText } from "../../styles/typography";
-import { StyledLoading } from "./styles";
 import { ImSpinner3 } from "react-icons/im";
+
+import { StyledLoading } from "./styles";
+
 
 export const LoadingPage = () => {
   return (
