@@ -16,7 +16,7 @@ export const StyledPainel = styled.aside`
     top: 6rem;
     right: 0;
     bottom: 0;
-    padding: 2rem 2%;
+    padding: 2rem 1%;
   }
 
   .user-infos {
@@ -24,7 +24,7 @@ export const StyledPainel = styled.aside`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 4%;
+    padding: 4% 0;
     gap: 1rem;
 
     .profile-pic {
@@ -70,7 +70,6 @@ export const StyledPainel = styled.aside`
       align-items: flex-start;
       gap: 0.5rem;
       max-width: 100%;
-      padding: 0 0 0 1rem;
     }
   }
 

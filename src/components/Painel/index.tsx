@@ -1,12 +1,16 @@
-import { StyledText } from "../../styles/typography";
-import { StyledButton } from "../Button";
-import { StyledPainel } from "./styles";
-import { iPainelProps } from "./types";
 import { BiHomeHeart, BiSearchAlt2, BiHeart, BiLogOut } from "react-icons/bi";
-import { BsPersonAdd } from "react-icons/bs";
+import { StyledText } from "../../styles/typography";
 import { MdPhotoCamera } from "react-icons/md";
 
+import { BsPersonAdd } from "react-icons/bs";
+import { StyledButton } from "../Button";
+
+import { StyledPainel } from "./styles";
+import { iPainelProps } from "./types";
+import { useAuth } from "../../hooks";
+
 export const Painel = ({ user }: iPainelProps) => {
+  const { logOut } = useAuth();
   if (!user) return;
   return (
     <StyledPainel>
@@ -24,7 +28,7 @@ export const Painel = ({ user }: iPainelProps) => {
             tag="h2"
             className=""
             color="--color-red-100"
-            text="six-m"
+            text="seven-m"
             lineHeight=""
           >
             {user.name}
@@ -66,7 +70,7 @@ export const Painel = ({ user }: iPainelProps) => {
           <BiHomeHeart />
           <span>Início</span>
         </StyledButton>
-        <StyledButton buttoncolor="red-60" buttonsize="large" type="button">
+        <StyledButton onClick={logOut} buttoncolor="red-60" buttonsize="large" type="button">
           <BiLogOut />
           <span>Sair</span>
         </StyledButton>
