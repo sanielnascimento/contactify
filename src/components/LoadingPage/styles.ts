@@ -14,15 +14,25 @@ export const StyledLoading = styled.main`
     align-items: center;
     justify-content: center;
 
+    margin-top: 8rem;
+
     width: fit-content;
     height: 200px;
 
-    gap: 2rem;
+    gap: 1rem;
+    > img {
+      max-width: 100%;
+      width: 100px;
+    }
+
+    .logoname {
+      width: 150px;
+    }
   }
 
   .spinner {
     font-size: 8rem;
-    animation: spin infinite 2s linear;
+    animation: spin infinite 1s linear;
   }
 
   @keyframes spin {

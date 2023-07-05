@@ -1,21 +1,23 @@
 import { iAuthContextValues, iAuthProviderProps, iUser } from "./types";
+import { iRegisterClient } from "../../pages/Register/types";
+
+import { iContact } from "../ContactsProvider/types";
 import { tLogin } from "../../pages/Login/types";
 
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
-
 import React from "react";
-import { iRegisterClient } from "../../pages/Register/types";
 
 export const AuthContext = React.createContext<iAuthContextValues>(
   {} as iAuthContextValues
 );
 
 export const AuthProvider = ({ children }: iAuthProviderProps) => {
-  const navigate = useNavigate();
+  const [contacts, setContacts] = React.useState<Array<iContact>>([]);
+  const [owner, setOwner] = React.useState<iUser | null>(null);
 
   const [loading, setLoading] = React.useState(true);
-  const [owner, setOwner] = React.useState<iUser | null>(null);
+  const navigate = useNavigate();
 
   const images: Array<string> = [
     "/img/pic-1.jpg",
@@ -33,59 +35,47 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     "/img/pic-13.jpg",
   ];
 
-
   React.useEffect(() => {
     try {
       setLoading(true);
       const token = localStorage.getItem("Contactify:token");
 
       if (!token) {
-        setTimeout(() => {
-          navigate("/login");
-          return;
-        }, 2000)
+        navigate("/login");
+        return;
       }
-
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
 
       (async () => {
         const owner = await api.get<iUser>("/clients", {
           headers: { Authorization: `Bearer ${token}` },
         });
-
         setOwner(owner.data);
       })();
-
-    } catch (error) {
-      console.log(error);
+    } catch (error: unknown) {
+      console.error(error);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setTimeout(() => setLoading(false), 2000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const signUp = async (body: iRegisterClient) => {
     try {
       const resp = await api.post("clients", body);
-      resp.status === 201 &&
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+      resp.status === 201 && setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       console.log(error);
+
+      console.error(error);
     }
   };
-
 
   const signIn = async (body: tLogin): Promise<void> => {
     try {
       const resp = await api.post("/login", body);
+
       const { token } = resp.data;
 
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
       localStorage.setItem("Contactify:token", token);
 
       const owner = await api.get<iUser>("/clients", {
@@ -93,26 +83,32 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
       });
 
       setOwner(owner.data);
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.error(error);
     }
   };
 
-
   const logOut = () => {
     localStorage.removeItem("Contactify:token");
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
+    setTimeout(() => navigate("/login"), 2000);
   };
+  
 
   return (
     <AuthContext.Provider
-      value={{ signUp, signIn, logOut, images, loading, owner }}
+      value={{
+        navigate,
+        signUp,
+        signIn,
+        logOut,
+        images,
+        loading,
+        owner,
+        contacts,
+        setContacts,
+        setLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>

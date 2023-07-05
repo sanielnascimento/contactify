@@ -3,7 +3,7 @@ import { iFooterProps } from "./types";
 
 export const StyledFooter = styled.footer<iFooterProps>`
   position: relative;
-  bottom: ${(props) => props.footerBottom};
+  bottom: ${(props) => props.footerbottom};
 
   display: flex;
   flex-direction: column;

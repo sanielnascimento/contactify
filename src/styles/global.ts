@@ -5,7 +5,7 @@ export default createGlobalStyle`
 --color-brand: #FF3131;
 --color-brand-o: #F44E3F;
 --color-primary: #880015;
---color-red-008: rgba(20, 1, 1, 0.8);
+--color-red-008: rgba(20, 1, 1, 0.5);
 --color-red-000: rgb(20, 1, 1);
 --color-red-100: #963131;
 --color-red-200: #F4796B;
