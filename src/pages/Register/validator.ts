@@ -22,7 +22,7 @@ export const registerSchema = z
       .min(6, "A senha deve ter no mínimo 6 caracteres")
       .max(15, "A senha deve ter no máximo 15 caracteres"),
     phone: z.preprocess((x) => Number(x), z.number()),
-    imgUrl: z.string(),
+    imgUrl: z.string().nonempty("Forneça uma Url de imagem"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas devem ser identicas",

@@ -3,7 +3,7 @@ import { StyledFooter } from "./styles";
 import React from "react";
 
 export const Footer = () => {
-  const [footerBottom, setFooterBottm] = React.useState<string>("0");
+  const [footerbottom, setFooterBottm] = React.useState<string>("0");
 
   const calculateFooterBottm = (pathname: string) => {
     if (pathname === "/login" || pathname === "/register") {
@@ -21,7 +21,7 @@ export const Footer = () => {
   }, []);
 
   return (
-    <StyledFooter footerBottom={footerBottom}>
+    <StyledFooter footerbottom={footerbottom}>
       <StyledText
         tag="p"
         className=""

@@ -30,7 +30,7 @@ export const Header = ({ user }: iHeaderProps) => {
               text="six-r"
               lineHeight="2.2"
             >
-              {user.name}
+              {user.name.split(" ")[0]}
             </StyledText>
           <figure className="header-figure">
             <img className="header-img" src={user.imgUrl} alt={user.name} />

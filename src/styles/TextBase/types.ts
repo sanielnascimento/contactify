@@ -26,6 +26,6 @@ export interface iTextBaseProps {
   | "--color-sucess"
   | "--color-warning"
   | "--color-white-fixed";
-  text: "one" | "two" | "three" | "four" | "five" | "six" | "six-m" | "six-r" | "seven" | "seven-m" | "height" | "nine";
+  text: "one" | "two" | "three" | "four" | "five" | "six" | "six-m" | "six-r" | "seven" | "seven-m" | "seven-s" | "height" | "nine";
   lineHeight: string;
 }
