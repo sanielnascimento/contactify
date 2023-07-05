@@ -1,6 +1,16 @@
+import { AuthProvider } from "./providers/AuthProvider";
+import { ContactProvider } from "./providers/ContactsProvider";
+import RoutesMain from "./routes";
+import GlobalStyle from "./styles/global";
+
 const App = () => (
   <>
-    <h1>Ok</h1>
+    <GlobalStyle />
+    <AuthProvider>
+      <ContactProvider>
+        <RoutesMain />
+      </ContactProvider>
+    </AuthProvider>
   </>
 );
 
