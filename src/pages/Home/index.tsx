@@ -15,7 +15,7 @@ import { SearchForm } from "../../components/Form/SearchForm";
 
 const Home = () => {
   const { navigate, owner, contacts, setContacts } = useAuth();
-  const { isOpenModal, toggleModal, isShowSearch } = useContact();
+  const { isOpenModal, toggleMainModal, isShowSearch } = useContact();
 
   useEffect(() => {
     const token = localStorage.getItem("Contactify:token");
@@ -35,16 +35,16 @@ const Home = () => {
 
   return (
     <>
-      <Header user={owner} />
+      <Header client={owner} />
       {isOpenModal && (
-        <MainModal toggleModal={toggleModal}>
+        <MainModal toggleModal={toggleMainModal}>
           <ContactCreateForm />
         </MainModal>
       )}
       {isShowSearch && <SearchForm/>}
       <StyledHome>
         <ContactBox contacts={contacts} />
-        <Painel user={owner} toggleModal={toggleModal} />
+        <Painel user={owner} toggleModal={toggleMainModal} />
       </StyledHome>
       <Footer />
     </>

@@ -4,16 +4,21 @@ import { iDeletePopupProps } from "./types";
 import { createPortal } from "react-dom";
 import { StyledButton } from "../../Button";
 import { AiOutlineUsergroupDelete } from "react-icons/ai";
+import { useAuth, useContact } from "../../../hooks";
 
 export const SlideDeletePopUp = ({
   children,
-  deleteContact,
   togglePopup,
   currentId,
 }: iDeletePopupProps) => {
+  const { deleteProfile } = useAuth();
+  const { deleteContact } = useContact();
   const [showWindow, setShowWindow] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  const deleting = async () => {
+    currentId ? await deleteContact(currentId) : await deleteProfile();
+  };
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -33,7 +38,6 @@ export const SlideDeletePopUp = ({
     };
   }, [togglePopup]);
 
-
   useEffect(() => {
     setShowWindow(true);
     return () => {
@@ -52,7 +56,7 @@ export const SlideDeletePopUp = ({
           <StyledButton
             buttoncolor="red-50"
             buttonsize="small"
-            onClick={() => deleteContact(currentId)}
+            onClick={() => deleting()}
           >
             Confirmar
           </StyledButton>

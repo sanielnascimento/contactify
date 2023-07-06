@@ -19,14 +19,16 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
   const [isOpenModal, setIsOpenModal] = React.useState<boolean>(false);
   const [isShowSearch, setIsShowSearch] = React.useState<boolean>(false);
   const [searchResults, setSearchResults] = React.useState<iContact[]>([]);
-  const [favoritedContacts, setFavoritedContacts] = React.useState<iContact[]>([]);
+  const [favoritedContacts, setFavoritedContacts] = React.useState<iContact[]>(
+    []
+  );
   const { contacts, setContacts } = useAuth();
 
-  const toggleModal = () => setIsOpenModal(!isOpenModal);
+  const toggleMainModal = () => setIsOpenModal(!isOpenModal);
 
-  const toggleSearch = () => {    
+  const toggleSearch = () => {
     setIsShowSearch(!isShowSearch);
-  }
+  };
 
   const token = localStorage.getItem("Contactify:token");
 
@@ -35,8 +37,10 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
       const resp = await api.post("contacts", body, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setContacts((previwsContacts) => [resp.data, ...previwsContacts]);
-      toggleModal();
+      setTimeout(() => {
+        setContacts((previwsContacts) => [resp.data, ...previwsContacts]);
+        toggleMainModal();
+      }, 1000);
     } catch (error) {
       console.error("Erro na criação do contato", error);
     }
@@ -44,14 +48,16 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
 
   const updateContact = async (cttId: string, body: iUpdateContact) => {
     try {
-      if (!Object.values(body).length) return;
+      if (Object.values(body).length == 0) return;
 
       const resp = await api.patch(`contacts/${cttId}`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setContacts((preCtt) =>
-        preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
-      );
+      setTimeout(() => {
+        setContacts((preCtt) =>
+          preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
+        );
+      }, 1000);
     } catch (error) {
       console.error("Erro ao atualizar o anuncio", error);
     }
@@ -66,9 +72,11 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      setContacts((preCtt) =>
-        preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
-      );
+      setTimeout(() => {
+        setContacts((preCtt) =>
+          preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
+        );
+      }, 1000);
     } catch (error) {
       console.error("Erro ao atualizar status do anuncio", error);
     }
@@ -79,9 +87,11 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
       const resp = await api.patch(`contacts/status/${cttId}`, undefined, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setContacts((preCtt) =>
-        preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
-      );
+      setTimeout(() => {
+        setContacts((preCtt) =>
+          preCtt.map((ctt) => (ctt.id === cttId ? resp.data : ctt))
+        );
+      }, 100)
     } catch (error) {
       console.error("Erro ao favoritar contato", error);
     }
@@ -108,7 +118,7 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
   const searchContacts = (word: SearchFormInput) => {
     const searchQuery = word.searchQuery.toLowerCase();
     console.log(searchQuery);
-    
+
     const filteredContacts = contacts.filter((contact) => {
       const { name, email, phone, comment } = contact;
       return (
@@ -127,16 +137,16 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
         updateContactCategory,
         favoritedContacts,
         favoritedsRender,
-        searchResults,
+        toggleMainModal,
         searchContacts,
         favoriteChange,
         createContact,
+        searchResults,
         updateContact,
         deleteContact,
         isShowSearch,
         toggleSearch,
         isOpenModal,
-        toggleModal,
       }}
     >
       {children}
