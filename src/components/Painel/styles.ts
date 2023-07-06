@@ -186,3 +186,45 @@ export const StyledPainel = styled.aside`
     }
   }
 `;
+
+export const StyledDropdownMenu = styled.form`
+  position: absolute;
+  top: 21rem;
+  left: 2%;
+  right: 2%;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 0.5rem;
+  background-color: var(--color-red-500);
+  border: .5rem solid var(--color-red-400);
+  border-radius: var(--radius-2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  > div > input {
+    background-color: var(--color-red-200);
+  }
+
+  > button {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    font-size: var(--font-size-8);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    border-radius: var(--radius-2);
+
+    background-color: var(--color-red-400);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: var(--color-red-200);
+      color: var(--color-red-600);
+    }
+  }
+`;

@@ -1,18 +1,18 @@
+import { registerSchema } from "../../providers/AuthProvider/validator";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { StyledText } from "../../styles/typography";
 import { Footer } from "../../components/Footer";
 
 import { Input } from "../../components/Input";
-import { registerSchema } from "./validator";
 import { useForm } from "react-hook-form";
 
 import { StyledRegister } from "./styles";
 import { iRegisterClient } from "./types";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks";
 import React from "react";
-
 
 const Register = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
