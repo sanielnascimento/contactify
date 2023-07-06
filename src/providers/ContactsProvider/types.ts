@@ -32,7 +32,7 @@ export interface iContactContextValues {
   favoritedsRender: () => void;
   searchResults: iContact[];
   toggleSearch: () => void;
-  toggleModal: () => void;
+  toggleMainModal: () => void;
   isShowSearch: boolean;
   isOpenModal: boolean;
 }

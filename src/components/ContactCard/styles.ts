@@ -124,6 +124,7 @@ export const StyledOption = styled.option`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
   align-items: center;
 
   font-size: var(--font-size-8);

@@ -1,6 +1,6 @@
-import { iUser } from "../../providers/AuthProvider/types";
+import { iClient } from "../../providers/AuthProvider/types";
 
 export interface iPainelProps {
-    user: iUser | null;
+    user: iClient | null;
     toggleModal: () => void;
 }

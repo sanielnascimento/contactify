@@ -1,4 +1,9 @@
-import { iAuthContextValues, iAuthProviderProps, iUser } from "./types";
+import {
+  iAuthContextValues,
+  iAuthProviderProps,
+  iClient,
+  iClientUpdate,
+} from "./types";
 import { iRegisterClient } from "../../pages/Register/types";
 
 import { iContact } from "../ContactsProvider/types";
@@ -14,10 +19,16 @@ export const AuthContext = React.createContext<iAuthContextValues>(
 
 export const AuthProvider = ({ children }: iAuthProviderProps) => {
   const [contacts, setContacts] = React.useState<Array<iContact>>([]);
-  const [owner, setOwner] = React.useState<iUser | null>(null);
+  const [owner, setOwner] = React.useState<iClient | null>(null);
 
   const [loading, setLoading] = React.useState(true);
   const navigate = useNavigate();
+
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
+
+  const toggleDropdown = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   const images: Array<string> = [
     "/img/pic-1.jpg",
@@ -35,10 +46,11 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     "/img/pic-13.jpg",
   ];
 
+  const token = localStorage.getItem("Contactify:token");
+
   React.useEffect(() => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("Contactify:token");
 
       if (!token) {
         navigate("/login");
@@ -46,7 +58,7 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
       }
 
       (async () => {
-        const owner = await api.get<iUser>("/clients", {
+        const owner = await api.get<iClient>("/clients", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOwner(owner.data);
@@ -62,11 +74,41 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
   const signUp = async (body: iRegisterClient) => {
     try {
       const resp = await api.post("clients", body);
-      resp.status === 201 && setTimeout(() => navigate("/login"), 2000);
+      resp.status === 201 && setTimeout(() => navigate("/login"), 1000);
     } catch (error) {
       console.log(error);
 
       console.error(error);
+    }
+  };
+
+  const updateClient = async (body: iClientUpdate) => {
+    try {
+      if (Object.values(body).length == 0) return;
+
+      const resp = await api.patch("clients", body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setTimeout(() => setOwner(resp.data), 1000);
+    } catch (error) {
+      console.error("Erro ao atualizar o cliente", error);
+    }
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("Contactify:token");
+    setTimeout(() => navigate("/login"), 1000);
+  };
+
+  const deleteProfile = async () => {
+    try {
+      await api.delete("/clients", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      logOut()
+      console.log("Perfil excluído com sucesso");
+    } catch (error) {
+      console.error("Erro ao excluir seu perfil", error);
     }
   };
 
@@ -78,36 +120,34 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
 
       localStorage.setItem("Contactify:token", token);
 
-      const owner = await api.get<iUser>("/clients", {
+      const owner = await api.get<iClient>("/clients", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       setOwner(owner.data);
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/"), 1000);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const logOut = () => {
-    localStorage.removeItem("Contactify:token");
-    setTimeout(() => navigate("/login"), 2000);
-  };
-  
-
   return (
     <AuthContext.Provider
       value={{
+        updateClient,
+        toggleDropdown,
+        deleteProfile,
+        setContacts,
+        setLoading,
+        contacts,
+        menuOpen,
         navigate,
+        loading,
         signUp,
         signIn,
         logOut,
         images,
-        loading,
         owner,
-        contacts,
-        setContacts,
-        setLoading,
       }}
     >
       {children}

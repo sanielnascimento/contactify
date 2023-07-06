@@ -1,6 +1,6 @@
-import { iUser } from "../../providers/AuthProvider/types";
+import { iClient } from "../../providers/AuthProvider/types";
 
 export interface iHeaderProps {
-    user: iUser | null
+    client: iClient | null
 }
 

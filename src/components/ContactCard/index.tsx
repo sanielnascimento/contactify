@@ -18,15 +18,16 @@ import { StyledButton } from "../Button";
 
 import { useContact } from "../../hooks";
 import { FiEdit } from "react-icons/fi";
+import { iClient } from "../../providers/AuthProvider/types";
 
 export const ContactCard = ({ contact }: iContactCardProps) => {
   const [toDelete, setToDelete] = useState<string | null>(null);
-  const [toUpdate, setToUpdate] = useState<iContact | null>(null);
-  const { deleteContact, updateContactCategory, favoriteChange } = useContact();
+  const [toUpdate, setToUpdate] = useState<iContact | null | iClient>(null);
+  const { updateContactCategory, favoriteChange } = useContact();
   const splitName: string[] = contact.name.split(" ");
 
   const togglePopup = () => setToDelete(null);
-  const toggleModal = () => setToUpdate(null);
+  const toggleUpdateModal = () => setToUpdate(null);
 
   const onSubmit = async (event: ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
@@ -45,7 +46,6 @@ export const ContactCard = ({ contact }: iContactCardProps) => {
     <SContactCard>
       {toDelete && (
         <SlideDeletePopUp
-          deleteContact={deleteContact}
           togglePopup={togglePopup}
           currentId={contact.id}
         >
@@ -61,8 +61,8 @@ export const ContactCard = ({ contact }: iContactCardProps) => {
         </SlideDeletePopUp>
       )}
       {toUpdate && (
-        <MainModal toggleModal={toggleModal}>
-          <ContactUpdateForm toggleModal={toggleModal} contact={contact} />
+        <MainModal toggleModal={toggleUpdateModal}>
+          <ContactUpdateForm toggleModal={toggleUpdateModal} contact={contact} />
         </MainModal>
       )}
       <div className="identification">
